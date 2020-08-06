@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Michael's Tea</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a [routerLink]="'/'" class="nav-link">Home</a></li>
+                <li class="nav-item"><a [routerLink]="'/stats'" class="nav-link">Statistics</a></li>
+                <li class="nav-item"><a [routerLink]="'/bitcoin'" class="nav-link">Bitcoin</a></li>
+                <li class="nav-item"><a [routerLink]="'/settings'" class="nav-link">Settings</a></li>
+                <li class="nav-item cta cta-colored"><a [routerLink]="'/cart'" class="nav-link"><span class="fa fa-shopping-cart"></span>[{{api.cart.length}}] Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

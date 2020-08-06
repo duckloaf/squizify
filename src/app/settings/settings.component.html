@@ -1,0 +1,139 @@
+<app-hero
+    [heading]="'Settings'"
+    [crumbs]="'Modify Tea and Bubble Lists'">
+</app-hero>
+
+<div class="container mt-4">
+    <h2>Edit Drinks List</h2>
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4" *ngFor="let product of products">
+            <div class="card">
+                <img [src]="'/assets/images/' + product.image" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price | currency}}</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal" (click)="selectProduct(product)">
+                        <i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i> Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <img src="/assets/images/blank.png" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">New Drink</h5>
+                    <p class="card-text">{{0 | currency}}</p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#productModal" (click)="createNewProduct()">
+                        <i class="fa fa-plus mr-2" aria-hidden="true"></i> New
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>Edit Bubble List</h2>
+    <div class="row">
+        <table class="table table-sm ">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Bubble Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bubble of bubbles">
+                <th scope="row">{{bubble.ID}}</th>
+                <td>{{bubble.name}}</td>
+                <td>{{bubble.price | currency}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bubbleModal" (click)="selectBubble(bubble)">
+                        <i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i> Edit
+                    </button>
+                </td>
+            </tr>
+
+            <tr class="table-info">
+                <th scope="row">NEW</th>
+                <td>Add New Bubble</td>
+                <td>{{0 | currency}}</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bubbleModal" (click)="createNewBubble()">
+                        <i class="fa fa-plus mr-2" aria-hidden="true"></i> New
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" *ngIf="selected_product">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="productImage">Product Image</label>
+                    <select class="form-control" id="productImage" [(ngModel)]="selected_product.image">
+                    <option value="brown.png">Brown</option>
+                    <option value="green.png">Green</option>
+                    <option value="pink.png">Pink</option>
+                    <option value="purple.png">Purple</option>
+                    <option value="yellow.png">Yellow</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" class="form-control" id="productName" [(ngModel)]="selected_product.name">
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Product Price</label>
+                    <input type="number" min="0" max="100" step="0.01" class="form-control" id="productPrice" [(ngModel)]="selected_product.price">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveProduct()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bubble Modal -->
+<div class="modal fade" id="bubbleModal" tabindex="-1" aria-labelledby="bubbleModalLabel" aria-hidden="true" *ngIf="selected_bubble">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bubbleModalLabel">Bubble Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="bubbleName">Bubble Name</label>
+                    <input type="text" class="form-control" id="bubbleName" [(ngModel)]="selected_bubble.name">
+                </div>
+                <div class="form-group">
+                    <label for="bubblePrice">Bubble Price</label>
+                    <input type="number" min="0" max="100" step="0.01" class="form-control" id="bubblePrice" [(ngModel)]="selected_bubble.price">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveBubble()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

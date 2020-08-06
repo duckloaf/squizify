@@ -1,0 +1,32 @@
+[
+    {
+        "ID": 1,
+        "name": "Pearls",
+        "price": 1.00,
+        "selected": false
+    },
+    {
+        "ID": 2,
+        "name": "Aloe",
+        "price": 0.75,
+        "selected": false
+    },
+    {
+        "ID": 3,
+        "name": "Cheese Foam",
+        "price": 1.00,
+        "selected": false
+    },
+    {
+        "ID": 4,
+        "name": "Milk Foam",
+        "price": 1.50,
+        "selected": false
+    },
+    {
+        "ID": 5,
+        "name": "White Pearls",
+        "price": 0.75,
+        "selected": false
+    }
+]

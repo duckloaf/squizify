@@ -1,0 +1,72 @@
+<app-hero
+    [heading]="'Shopping Cart'"
+    [crumbs]="'Your Items'">
+</app-hero>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="cart-list">
+                <table class="table">
+                    <thead class="thead-primary">
+                    <tr class="text-center">
+                        <th>&nbsp;</th>
+                        <th>Product name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="api.cart.length > 0">
+                    <tr class="text-center" *ngFor="let product of api.cart">
+                        <td class="image-prod"><div class="img" style="background-image:url(assets/images/{{product.image}});"></div></td>
+                        <td class="product-name">
+                            <h3>{{product.name}}</h3>
+                            <!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
+                            <span class="badge badge-light mr-1" *ngFor="let bubble of product.bubbles">{{bubble.name}}</span>
+                        </td>
+                        <td class="price">{{calculateItemTotal(product) | currency}}</td>
+                        <td class="quantity">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="product.quantity = product.quantity - 1">-</button>
+                                </div>
+                                <input type="number" name="quantity" [(ngModel)]="product.quantity" class="quantity form-control input-number" min="1" max="100">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="product.quantity = product.quantity + 1">+</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="total">{{calculateLineTotal(product) | currency}}</td>
+                        <td class="product-remove"><a href="javascript:void(0);" (click)="removeProductFromCart(product)"><span class="fa fa-times"></span></a></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="col-lg-4 mt-5 cart-wrap">
+            <div class="cart-total mb-3">
+                <h3>Cart Totals</h3>
+                <p class="d-flex">
+                    <span>Subtotal</span>
+                    <span>{{calculateOrderTotal() | currency}}</span>
+                </p>
+                <p class="d-flex">
+                    <span>Delivery</span>
+                    <span>{{0 | currency}}</span>
+                </p>
+                <hr>
+                <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span>{{calculateOrderTotal() | currency}}</span>
+                </p>
+            </div>
+            <p><a href="javascript:void(0);" class="btn btn-primary py-3 px-4" (click)="processOrder()">Process Order</a></p>
+        </div>
+    </div>
+</div>

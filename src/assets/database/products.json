@@ -1,0 +1,37 @@
+[
+    {
+        "ID": 1,
+        "image": "green.png",
+        "name": "Green Tea",
+        "price": 4.00,
+        "bubbles": []
+    },
+    {
+        "ID": 2,
+        "image": "brown.png",
+        "name": "Oolong Tea",
+        "price": 4.00,
+        "bubbles": []
+    },
+    {
+        "ID": 3,
+        "image": "pink.png",
+        "name": "Strawberry Tea",
+        "price": 5.00,
+        "bubbles": []
+    },
+    {
+        "ID": 4,
+        "image": "purple.png",
+        "name": "Grape Tea",
+        "price": 5.00,
+        "bubbles": []
+    },
+    {
+        "ID": 5,
+        "image": "yellow.png",
+        "name": "Pineapple Tea",
+        "price": 4.50,
+        "bubbles": []
+    }
+]
